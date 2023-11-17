@@ -1,8 +1,12 @@
 import React from 'react'
 
-function Button({text, onClick}) {
+function Button({text, onClick, isDisabled}) {
     return (
-        <button onClick={onClick}>{text}</button>
+        <button 
+            disabled={isDisabled}
+            onClick={onClick}>
+            {text}
+        </button>
     )
 }
 export default Button;
