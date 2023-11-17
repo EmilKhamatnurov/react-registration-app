@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import Button from './Button/Button'
 import Counter from './Counter/Counter';
+import History from './History/History';
+
 let nextIndex = 0;
 
 function App() {
@@ -31,7 +33,6 @@ function App() {
       <Counter 
         value={counter}
         isDanger={counterOutOfRange()}/>
-
       <Button
         text = "-"
         onClick={handleBtnClick}
@@ -40,11 +41,9 @@ function App() {
         text = "+"
         onClick={handleChangeBtnClick}
         isDisabled={checkMaxValue()}/>
-      <ul className="operation-history">
-        {history.map(field => (
-          <li key={field.id}>Значение счетчика: {field.count} операция {field.operation}</li>
-        ))}
-      </ul>
+      <History
+        history={history}
+      />
     </>
   )
 }
