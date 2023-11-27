@@ -1,13 +1,10 @@
 import React from 'react'
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client'
-import App from './Counter.jsx'
-import BIO from './BIO.jsx'
-
+import App from './App'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    <>
-    <BIO/>
-    {/* <App /> */}
-    </>
-    
+    <StrictMode>
+        <App/>
+    </StrictMode>
 )

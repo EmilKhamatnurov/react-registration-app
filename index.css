@@ -1,5 +1,8 @@
+@import 'node_modules/reset-css/reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
 body, html {
-    color: white;
-    background-color: rgb(36, 36, 36);
-    padding: 30px;
+    padding: 50px 0;
+    background-color: #131313;
+    font-family: 'Fira Code', monospace;
 }
