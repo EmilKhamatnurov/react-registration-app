@@ -8,6 +8,7 @@ const buttonStyles = createUseStyles({
         padding: "15px 50px",
         borderRadius: "4px",
         background: "#4B72C2",
+        fontFamily: "Fira Code;",
         color: "white",
     }) 
 })
