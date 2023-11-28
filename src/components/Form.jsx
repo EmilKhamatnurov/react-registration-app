@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { createUseStyles } from 'react-jss';
 import Input from './Input'
 import Button from './Button';
+import Select from './Select';
 
 const formStyles = createUseStyles({
     'inputs-form': {
@@ -37,6 +38,7 @@ function Form() {
             ...form, 
             [name]: value
         })
+        console.log(form);
     }
 
     function handleSubmit() {
@@ -85,6 +87,9 @@ function Form() {
                 inputName='comment'
                 onChange={handleInputChange}
                 />
+            <Select
+                onChange={handleInputChange}
+                shooting_type={SHOOTING_TYPES}/>
            <Button
            text="Отправить"/>
         </form>
