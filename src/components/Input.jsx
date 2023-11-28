@@ -5,6 +5,8 @@ const inputStyle = createUseStyles({
     'input-field': {
         marginBottom: "30px",
         maxWidth: "100%",
+        boxSizing: "border-box",
+        width: "100%",
         display: "block",
         padding: "14px 20px",
         background: "#242424",

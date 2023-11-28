@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
+import { createUseStyles } from 'react-jss';
 import Input from './Input'
 import Button from './Button';
+
+const formStyles = createUseStyles({
+    'inputs-form': {
+        maxWidth: "100%",
+        width: "100%",
+
+    }
+})
 
 const SHOOTING_TYPES = {
     CATALOG_PHOTOGRAPHY: 'Каталожная съемка на белом фоне',
@@ -9,6 +18,8 @@ const SHOOTING_TYPES = {
 }
 
 function Form() {
+
+    const formStyle = formStyles();
     // STATES
     const [form, setForm] = useState({
         name: '',
@@ -33,7 +44,7 @@ function Form() {
     }
     // RENDER
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={formStyle['inputs-form']} onSubmit={handleSubmit}>
             <Input
                 text='Имя и Фамилия'
                 inputType='simple input'
