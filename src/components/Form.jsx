@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { createUseStyles } from 'react-jss';
+import Cleave from 'cleave.js/react';
 
 import Input from './Input'
+import CleaveInput from './Inputs/CleaveInput';
 import Button from './Button';
 import Select from './Select';
 
@@ -23,6 +25,7 @@ function Form() {
         STAGED_PHOTOGRAPGY: 'Имиджевая съемка. Простой реквизит',
         ARTISTIC_PHOTOGRAPHY: 'Имиджевая съемка. Сложная постановка'
     }
+
     const formStyle = formStyles();
     // STATES
     const [inputError, setError] = useState({
@@ -47,6 +50,7 @@ function Form() {
             ...form, 
             [name]: value
         })
+        console.log(form);
     }
 
     function handleSelectChange(e) {
@@ -64,6 +68,11 @@ function Form() {
         alert(form.name)
     }
     
+    // Cleave phone number input 
+    const cleave = new Cleave('.input-element', {
+        phone: true,
+        phoneRegionCode: '{country}'
+    });
 
     // RENDER
     return (
@@ -77,40 +86,43 @@ function Form() {
                 type="text"
                 value={form.name}
                 inputName='name'
-                onChange={handleInputChange}
-                />
-            <Input
+                onChange={handleInputChange}/>
+
+            <CleaveInput
+                text='+7 (999) 999-99-99'
+                type="number"
+                value={form.number}
+                inputName='number'
+                onChange={handleInputChange}/>
+            {/* <Input
                 text='+7 (999) 999-99-99'
                 inputType='simple input'
                 type="number"
                 value={form.number}
                 inputName='number'
                 onChange={handleInputChange}
-                />
+                /> */}
             <Input
                 text='Количество фото'
                 inputType='simple input'
                 type="number"
                 value={form.photoQuantity}
                 inputName='photoQuantity'
-                onChange={handleInputChange}
-                />
+                onChange={handleInputChange}/>
             <Input
                 text='Количество товаров'
                 inputType='simple input'
                 type="number"
                 value={form.productQuantity}
                 inputName='productQuantity'
-                onChange={handleInputChange}
-                />
+                onChange={handleInputChange}/>
             <Input
                 text='Комментарий'
                 inputType='textarea'
                 type="text"
                 value={form.comment}
                 inputName='comment'
-                onChange={handleInputChange}
-                />
+                onChange={handleInputChange}/>
             <Select
                 onChange={handleSelectChange}
                 value={form.shooting_type}
