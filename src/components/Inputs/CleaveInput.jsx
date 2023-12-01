@@ -27,21 +27,21 @@ const inputStyle = createUseStyles({
 )
 
 function CleaveInput({type, inputName, text, value, onChange}) {
-        const input_style = inputStyle()
+    const input_style = inputStyle()
 
-        return (
-            <Cleave
-                className={input_style["input-field"]} 
-                placeholder={text}
-                options={{
-                        phone: true,
-                        phoneRegionCode: 'RU'
-                }}
-                onChange={onChange} 
-                name={inputName}
-                value={value}
-                />
-        );
+    return (
+        <Cleave
+            className={input_style["input-field"]} 
+            placeholder={text}
+            options={{
+                    phone: true,
+                    phoneRegionCode: 'RU'
+            }}
+            onChange={onChange} 
+            name={inputName}
+            value={value}
+            />
+    );
 }
 
 export default CleaveInput

@@ -6,6 +6,7 @@ import Input from './Input'
 import CleaveInput from './Inputs/CleaveInput';
 import Button from './Button';
 import Select from './Select';
+import PlainText from './PlainText';
 
 const formStyles = createUseStyles({
     'inputs-form': {
@@ -46,12 +47,22 @@ function Form() {
     function handleInputChange(e) {
         const {name, value, type} = e.target
 
+        if (type === 'number' & !onlyNumberCheck(value)) {
+            return
+        }
+
         setForm({
             ...form, 
             [name]: value
         })
         console.log(form);
     }
+function onlyNumberCheck(value) {
+    const numericRegex = /^[0-9\b]+$/;
+    if (numericRegex.test(value) || value === '') {
+        return true
+    }
+}
 
     function handleSelectChange(e) {
         const options = [...e.target.selectedOptions];
@@ -87,21 +98,12 @@ function Form() {
                 value={form.name}
                 inputName='name'
                 onChange={handleInputChange}/>
-
             <CleaveInput
                 text='+7 (999) 999-99-99'
                 type="number"
                 value={form.number}
                 inputName='number'
                 onChange={handleInputChange}/>
-            {/* <Input
-                text='+7 (999) 999-99-99'
-                inputType='simple input'
-                type="number"
-                value={form.number}
-                inputName='number'
-                onChange={handleInputChange}
-                /> */}
             <Input
                 text='Количество фото'
                 inputType='simple input'
@@ -123,6 +125,12 @@ function Form() {
                 value={form.comment}
                 inputName='comment'
                 onChange={handleInputChange}/>
+            <PlainText
+                text="Выбрать можно несколько вариантов"
+                size="14px"
+                color="#f9c349"
+                bottomIndent="15px"
+                />
             <Select
                 onChange={handleSelectChange}
                 value={form.shooting_type}
