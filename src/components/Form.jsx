@@ -29,11 +29,12 @@ function Form() {
 
     const formStyle = formStyles();
     // STATES
+        // Ошибка
     const [inputError, setError] = useState({
         text: '',
         isError: false
     });
-
+        // Данные формы
     const [form, setForm] = useState({
         name: '',
         number: '',
@@ -42,7 +43,8 @@ function Form() {
         comment: '',
         shooting_type: [SHOOTING_TYPES['CATALOG_PHOTOGRAPHY']]
     })
-
+        // Подтверждение обработки персональных данных
+    const [check, setCheck] = useState(false)
     // FUNCTIONS
     function handleInputChange(e) {
         const {name, value, type} = e.target
@@ -55,14 +57,15 @@ function Form() {
             ...form, 
             [name]: value
         })
-        console.log(form);
+
     }
-function onlyNumberCheck(value) {
-    const numericRegex = /^[0-9\b]+$/;
-    if (numericRegex.test(value) || value === '') {
-        return true
+    // Проверка поля на ввод цифр
+    function onlyNumberCheck(value) {
+        const numericRegex = /^[0-9\b]+$/;
+        if (numericRegex.test(value) || value === '') {
+            return true
+        }
     }
-}
 
     function handleSelectChange(e) {
         const options = [...e.target.selectedOptions];
@@ -72,9 +75,9 @@ function onlyNumberCheck(value) {
             shooting_type: values,
         })
     }
-
-    const isPositiveNumber = (number) => parseInt(number) >= 0; 
-
+    function handleCheckboxChange () {
+        setCheck(!check);
+    }
     function handleSubmit() {
         alert(form.name)
     }
@@ -135,8 +138,13 @@ function onlyNumberCheck(value) {
                 onChange={handleSelectChange}
                 value={form.shooting_type}
                 shooting_type={SHOOTING_TYPES}/>
+            <Input
+                inputType='checkbox'
+                value={check}
+                onChange={handleCheckboxChange}/>
            <Button
-           text="Отправить"/>
+                disabled={!check}
+                text="Отправить"/>
         </form>
     )
 }

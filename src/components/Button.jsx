@@ -10,13 +10,17 @@ const buttonStyles = createUseStyles({
         background: "#4B72C2",
         fontFamily: "Fira Code;",
         color: "white",
+        "&:disabled": {
+            background: "#6d7a83",
+            opacity: "0.5" 
+        }
     }) 
 })
 
 function Button(props) {
     const buttonStyle = buttonStyles(props);
     return (
-        <button className={buttonStyle.submitButton} type="submit">
+        <button disabled={props.disabled} className={buttonStyle.submitButton} type="submit">
             {props.text}
         </button>
     )

@@ -21,10 +21,19 @@ const inputStyle = createUseStyles({
         "&:focus": {
             borderColor: '#6900C6' 
         }
-    }}
-)
+    },
+    'checkbox-input': {
+        color: "white",
+    },
+    'checkbox-input:input': {
+        marginBottom: "15px"
+    }
+})
+
 function Input({ type, inputType, inputName, text, value, onChange }) { 
+
     const styles = inputStyle();
+    // 3 типа Input
     if (inputType === "textarea") {
         return(
             <textarea 
@@ -35,7 +44,17 @@ function Input({ type, inputType, inputName, text, value, onChange }) {
                 placeholder={text}>
             </textarea>
         )
-    }  
+    } else if (inputType === "checkbox") {
+        return(
+            <label className={styles['checkbox-input']}>
+                <input 
+                    className={styles['checkbox-input:input']} 
+                    type="checkbox"
+                    onChange={onChange}/>
+                Даю согласие на обработку персонаьных данных
+            </label>
+        )
+    }
     return (
         <input 
             className={styles['input-field']}
