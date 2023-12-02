@@ -38,8 +38,8 @@ function Form() {
     const [form, setForm] = useState({
         name: '',
         number: '',
-        photoQuantity: 0,
-        productQuantity: 0,
+        photoQuantity: '',
+        productQuantity: '',
         comment: '',
         shooting_type: [SHOOTING_TYPES['CATALOG_PHOTOGRAPHY']]
     })
@@ -79,7 +79,7 @@ function Form() {
         setCheck(!check);
     }
     function handleSubmit() {
-        alert(form.name)
+        alert("Постараемся отправить ваши данные фотографу")
     }
     
     // Cleave phone number input 
@@ -102,7 +102,7 @@ function Form() {
                 inputName='name'
                 onChange={handleInputChange}/>
             <CleaveInput
-                text='+7 (999) 999-99-99'
+                text='8 (999) 999-99-99'
                 type="number"
                 value={form.number}
                 inputName='number'

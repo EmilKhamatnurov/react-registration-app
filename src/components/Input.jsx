@@ -51,7 +51,7 @@ function Input({ type, inputType, inputName, text, value, onChange }) {
                     className={styles['checkbox-input:input']} 
                     type="checkbox"
                     onChange={onChange}/>
-                Даю согласие на обработку персонаьных данных
+                {" "}Даю согласие на обработку персональных данных
             </label>
         )
     }
